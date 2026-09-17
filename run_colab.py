@@ -17,7 +17,6 @@ async def execute_notebook():
 
     print("[+] Initializing Playwright browser instance...")
     async with async_playwright() as p:
-        # Set realistic viewport size
         browser = await p.chromium.launch(
             headless=True,
             args=["--no-sandbox", "--disable-setuid-sandbox"]
@@ -33,20 +32,27 @@ async def execute_notebook():
         try:
             print(f"[+] Navigating to Colab: {COLAB_URL}")
             await page.goto(COLAB_URL, wait_until="domcontentloaded", timeout=60000)
-            
-            # Allow 5 seconds for initial rendering
             await asyncio.sleep(5)
 
             print(f"[+] Loaded Page Title: '{await page.title()}'")
             print(f"[+] Loaded Page URL: '{page.url}'")
 
-            # Check if redirected to Google sign-in
+            # Handle 'Choose an account' prompt if Google displays account picker
             if "accounts.google.com" in page.url or "signin" in page.url:
-                print("[X] ERROR: Session expired or untrusted IP. Google redirected to Sign-in page.")
+                print("[!] Google Account Choose screen detected. Attempting auto-select...")
+                account_tile = page.locator("div[data-email], li:has-text('kukkadmasti@gmail.com')")
+                if await account_tile.is_visible(timeout=5000):
+                    await account_tile.click()
+                    print("[+] Clicked account tile. Waiting for session redirect...")
+                    await page.wait_for_load_state("networkidle", timeout=15000)
+
+            # Check if still stuck on login screen
+            if "accounts.google.com" in page.url:
+                print("[X] ERROR: Session expired. Google requires password login.")
                 await page.screenshot(path="failure.png")
                 sys.exit(1)
 
-            # Wait for Colab toolbar or notebook cell container
+            # Wait for Colab toolbar or notebook elements
             print("[+] Waiting for Colab interface elements...")
             try:
                 await page.wait_for_selector("#menubar-container, colab-run-button, .notebook-container", timeout=45000)
@@ -54,7 +60,6 @@ async def execute_notebook():
             except Exception:
                 print("[!] Specific selector not found, attempting direct shortcut trigger...")
 
-            # Wait an additional 3s for controls to hook up
             await asyncio.sleep(3)
 
             print("[+] Triggering 'Run All' cells (Ctrl+F9)...")
