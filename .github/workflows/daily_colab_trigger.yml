@@ -1,0 +1,39 @@
+name: Scheduled Colab CrewAI Runner
+
+on:
+  schedule:
+    # Custom Cron Schedule (e.g. Daily at 09:00 UTC)
+    - cron: '0 9 * * *'
+  repository_dispatch:
+    types: [trigger_colab_run]
+  workflow_dispatch:
+
+jobs:
+  run-colab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Restore Google Session
+        env:
+          GOOGLE_AUTH_JSON: ${{ secrets.GOOGLE_AUTH_JSON }}
+        run: |
+          echo "$GOOGLE_AUTH_JSON" > google_auth.json
+
+      - name: Execute Playwright Colab Runner
+        env:
+          COLAB_URL: ${{ secrets.COLAB_URL }}
+        run: |
+          python run_colab.py

@@ -1,0 +1,18 @@
+# Sensitive Authentication & Session Secrets
+google_auth.json
+chrome_user_data/
+.env
+.env*.local
+
+# Python / Conda artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Next.js / Node
+node_modules/
+.next/
+out/
+build/
+*.log

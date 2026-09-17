@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "name": "SID",
+      "value": "YOUR_SID_COOKIE_VALUE",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "HSID",
+      "value": "YOUR_HSID_COOKIE_VALUE",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SSID",
+      "value": "YOUR_SSID_COOKIE_VALUE",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
