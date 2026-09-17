@@ -2,7 +2,7 @@ name: Scheduled Kaggle CrewAI Runner
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 1 * * *'  # Runs daily at 1:00 AM UTC (6:30 AM IST)
   repository_dispatch:
     types: [trigger_colab_run]
   workflow_dispatch:
