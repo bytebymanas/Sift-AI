@@ -1,4 +1,4 @@
-name: Scheduled Colab CrewAI Runner
+name: Scheduled Kaggle CrewAI Runner
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-colab:
+  run-kaggle:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,27 +20,12 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Playwright & Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install playwright
-          playwright install chromium
+      - name: Install Kaggle CLI
+        run: pip install kaggle
 
-      - name: Hydrate Session Credentials
+      - name: Push & Trigger Kaggle GPU Execution
         env:
-          GOOGLE_AUTH_JSON: ${{ secrets.GOOGLE_AUTH_JSON }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          echo "$GOOGLE_AUTH_JSON" > google_auth.json
-
-      - name: Execute Colab Runner
-        env:
-          COLAB_URL: ${{ secrets.COLAB_URL }}
-        run: |
-          python run_colab.py
-
-      - name: Upload Screenshot Artifact on Failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: failure-screenshot
-          path: failure.png
+          kaggle kernels push -p .
