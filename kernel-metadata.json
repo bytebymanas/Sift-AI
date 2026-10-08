@@ -1,12 +1,13 @@
 {
-  "id": "algobymanas/Sift-AI",
-  "title": "Sift AI Daily Runner",
+  "id": "algobymanas/sift-ai-daily-runner",
+  "title": "sift-ai-daily-runner",
   "code_file": "sift-ai.ipynb",
   "language": "python",
   "kernel_type": "notebook",
-  "is_private": true,
-  "enable_gpu": true,
-  "enable_internet": true,
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
   "dataset_sources": [],
   "kernel_sources": [],
   "competition_sources": []
