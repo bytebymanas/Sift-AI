@@ -3,6 +3,7 @@ google_auth.json
 chrome_user_data/
 .env
 .env*.local
+.DS_Store
 
 # Python / Conda artifacts
 __pycache__/
