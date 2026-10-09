@@ -3,7 +3,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&height=240&color=0:0f0c29,50:302b63,100:20BEFF&text=SIFT%20AI&fontColor=ffffff&fontSize=78&fontAlignY=38&desc=The%20best%20article%20of%20the%20day%2C%20picked%20by%20AI%20%C2%B7%20Zero%20servers%20%C2%B7%20Zero%20API%20bills&descAlignY=60&descSize=17&animation=fadeIn" alt="Sift AI" width="100%" />
 
 <a href="https://github.com/bytebymanas/sift-ai">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=900&color=20BEFF&center=true&vCenter=true&width=820&lines=GitHub+Actions+wakes+up+at+6%3A30+AM;Kaggle+launches+the+notebook+on+a+T4+GPU;Qwen+picks+the+single+best+article+of+the+day;A+PDF+with+takeaways+and+a+word+of+the+day+lands+in+your+inbox" alt="Typing animation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=900&color=20BEFF&center=true&vCenter=true&width=820&lines=A+scheduler+pings+GitHub+Actions+at+the+time+you+choose;Kaggle+launches+the+notebook+on+a+T4+GPU;Qwen+picks+the+single+best+article+of+the+day;A+PDF+with+takeaways+and+a+word+of+the+day+lands+in+your+inbox" alt="Typing animation" />
 </a>
 
 <br/>
@@ -31,13 +31,13 @@
 
 Most news is noise. **Sift AI** reads the day's candidates and hands you exactly one article worth your time, complete with key takeaways and a word of the day to grow your vocabulary.
 
-Every morning a GitHub Actions workflow launches a Kaggle notebook. Inside it, a small crew of AI agents running open-source Qwen models collects fresh stories, picks the strongest one, summarizes it, chooses a useful English word, and emails everything to you as a clean PDF.
+Every day at the time you choose, a scheduler triggers a GitHub Actions workflow, which launches a Kaggle notebook. Inside it, a small crew of AI agents running open-source Qwen models collects fresh stories, picks the strongest one, summarizes it, chooses a useful English word, and emails everything to you as a clean PDF.
 
 No server stays on. No LLM API is billed. Nobody has to press a button.
 
 <table>
 <tr>
-<td align="center" width="25%"><h3>06:30</h3><sub>Fires daily on schedule</sub></td>
+<td align="center" width="25%"><h3>Daily</h3><sub>At the time you choose</sub></td>
 <td align="center" width="25%"><h3>1 Article</h3><sub>Chosen from ~20 candidates</sub></td>
 <td align="center" width="25%"><h3>4 Agents</h3><sub>Select · Summarize · Vocab</sub></td>
 <td align="center" width="25%"><h3>$0</h3><sub>Inference cost</sub></td>
@@ -80,7 +80,7 @@ No server stays on. No LLM API is billed. Nobody has to press a button.
 
 | Step | What happens |
 | :---: | :--- |
-| **1** | GitHub Actions fires on the cron schedule (or a `repository_dispatch` event) and pushes the notebook to Kaggle with the CLI |
+| **1** | A scheduler (cron-job.org) calls GitHub's `repository_dispatch` API at the time you set. The workflow pushes the notebook to Kaggle with the CLI |
 | **2** | Kaggle starts a T4 GPU kernel. The notebook installs Ollama and pulls the two Qwen models |
 | **3** | It queries NewsData for each of your topics (globally and India-scoped) and reads editorial RSS feeds, then scrapes and cleans every candidate |
 | **4** | The Senior News Editor agent picks the one article that best rewards a reader's time |
@@ -204,15 +204,57 @@ export KAGGLE_KEY="your_api_key"
 kaggle kernels push -p .
 ```
 
-### 5. Let it run
+### 5. Set up the daily trigger
 
-From here the scheduled workflow takes over, and a fresh brief arrives every morning.
+GitHub's built-in `schedule` is best-effort and can run hours late, so Sift AI is triggered by an external scheduler instead. Make sure the workflow file is on your **default branch**, because `repository_dispatch` only works from there.
+
+**a) Create a GitHub token for the scheduler**
+
+1. GitHub → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**
+2. **Repository access:** only select repositories → your `sift-ai` repo
+3. **Permissions → Contents:** Read and write
+4. Copy the token right away, since GitHub shows it only once. Never commit it or paste it anywhere public.
+
+**b) Test the token**
+
+```bash
+read -s TOKEN    # paste the token, press Enter (nothing will show)
+
+curl -i -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/YOUR_GITHUB_USERNAME/sift-ai/dispatches \
+  -d '{"event_type":"trigger_colab_run"}'
+```
+
+`HTTP/2 204` means success, and a run appears in the **Actions** tab.
+
+**c) Schedule it on [cron-job.org](https://cron-job.org) (free)**
+
+| Setting | Value |
+| :--- | :--- |
+| Account timezone | Your own timezone (for example `Asia/Kolkata`) |
+| URL | `https://api.github.com/repos/YOUR_GITHUB_USERNAME/sift-ai/dispatches` |
+| Schedule | Every day at **the time you want the brief to run** |
+| Method | `POST` |
+| Headers | `Authorization: Bearer YOUR_TOKEN`, `Accept: application/vnd.github+json`, `Content-Type: application/json` |
+| Body | `{"event_type":"trigger_colab_run"}` |
+
+Use **Test run** on the job and check for status `204`.
+
+> Fine-grained tokens expire. Note the expiry date and renew the token in cron-job.org before it lapses, or the daily run will silently stop.
+
+### 6. Let it run
+
+From here the scheduler fires every day at the time you chose and a fresh brief arrives in your inbox. Allow some time after the trigger for Kaggle to queue and finish the notebook before you expect the email.
 
 <br/>
 
 ## ◈ Customize Your Feed
 
 Open `sift-ai.ipynb` and edit the configuration cell near the top. Commit and push, and the next scheduled run uses your changes.
+
+**Run time.** Change the time on the cron-job.org job, and nothing else is needed. The workflow also includes an optional guard step ("Check IST time window") that skips API-triggered runs outside a set hour range, so a late trigger never sends a stale brief. Edit the timezone and the two hour values in that step to match your schedule, or delete the step if you don't want a guard.
 
 **Topics you care about** (`USER_PREFERRED_TOPICS`). These are a preference, not a filter. A great article outside your topics still beats a mediocre one inside them.
 
@@ -258,7 +300,8 @@ EDITORIAL_FEEDS = {
 
 | Layer | Tooling |
 | :--- | :--- |
-| **Orchestration** | GitHub Actions (`cron`, `repository_dispatch`) |
+| **Scheduling** | cron-job.org (free) calling GitHub `repository_dispatch` |
+| **Orchestration** | GitHub Actions |
 | **Compute** | Kaggle GPU kernels · Nvidia T4 · Python 3.10 |
 | **LLM inference** | Ollama · Qwen 2.5 7B Instruct · Qwen 3 1.7B |
 | **Agents** | CrewAI |
@@ -286,6 +329,14 @@ The first version drove Google Colab through Playwright. It worked until the DOM
 </details>
 
 <details>
+<summary><b>External scheduler, not GitHub's <code>schedule</code></b></summary>
+<br/>
+
+GitHub's cron trigger runs on shared infrastructure and can start late, sometimes by hours. For a brief that has to land in the morning, that is too unreliable. A scheduler that calls the `repository_dispatch` API starts the workflow within seconds of the target time, and an optional time-window guard in the workflow prevents a stray late trigger from sending a stale brief.
+
+</details>
+
+<details>
 <summary><b>Models judge, code handles the text</b></summary>
 <br/>
 
@@ -309,7 +360,7 @@ Qwen served through Ollama means no per-token billing and no vendor lock-in.
 sift-ai/
 ├── .github/
 │   └── workflows/
-│       └── daily_colab_trigger.yml   # Cron + dispatch automation
+│       └── daily_colab_trigger.yml   # Dispatch trigger + optional time-window guard
 ├── assets/                           # README graphics
 ├── sift-ai.ipynb                     # Full pipeline: collect, select, summarize, PDF, email
 ├── kernel-metadata.json              # Kaggle GPU execution spec
@@ -323,13 +374,25 @@ sift-ai/
 <details>
 <summary><b>Do I need a GPU or a server?</b></summary>
 <br/>
-No. The GPU is a Kaggle T4 that spins up for the run and shuts down afterwards. GitHub Actions is the only thing that wakes it.
+No. The GPU is a Kaggle T4 that spins up for the run and shuts down afterwards. A free external scheduler and GitHub Actions are the only things that wake it.
 </details>
 
 <details>
 <summary><b>Can I trigger a run outside the schedule?</b></summary>
 <br/>
-Yes. The workflow listens for <code>repository_dispatch</code> events, so any authenticated call to the GitHub API starts a run on demand. You can also push the kernel yourself with the Kaggle CLI.
+Yes. Use <b>Actions → Run workflow</b> (<code>workflow_dispatch</code>) at any time of day. API calls (<code>repository_dispatch</code>) run whenever they arrive, unless you keep the optional time-window guard in the workflow, in which case they are skipped outside the hours you set. You can also push the kernel yourself with the Kaggle CLI.
+</details>
+
+<details>
+<summary><b>Why was my run skipped?</b></summary>
+<br/>
+If you kept the optional "Check IST time window" step, it skips API-triggered runs outside the hours set in that step. Make sure those hours match the time on your cron-job.org job (and its timezone), edit or delete the step, or start the run manually from the Actions tab.
+</details>
+
+<details>
+<summary><b>The daily run stopped working. What should I check?</b></summary>
+<br/>
+Most often the GitHub token used by the scheduler has expired. Create a new one (Contents: Read and write), update it in cron-job.org, and use <b>Test run</b> to confirm a <code>204</code> response.
 </details>
 
 <details>
