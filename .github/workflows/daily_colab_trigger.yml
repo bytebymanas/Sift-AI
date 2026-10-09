@@ -1,31 +1,48 @@
 name: Scheduled Kaggle CrewAI Runner
 
 on:
-  schedule:
-    - cron: '15 1 * * *'  # 1:15 AM UTC = 6:45 AM IST
   repository_dispatch:
     types: [trigger_colab_run]
   workflow_dispatch:
-  
+
+concurrency:
+  group: kaggle-run
+  cancel-in-progress: false
+
 jobs:
   run-kaggle:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check IST time window (6:00-8:00 AM)
+        id: window
+        run: |
+          hour=$(TZ=Asia/Kolkata date +%-H)
+          echo "Current IST hour: $hour"
+          if [ "${{ github.event_name }}" = "repository_dispatch" ] && { [ "$hour" -lt 6 ] || [ "$hour" -ge 8 ]; }; then
+            echo "Outside 6-8 AM IST window, skipping"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout Code Repository
+        if: steps.window.outputs.run == 'true'
         uses: actions/checkout@v4
 
       - name: Setup Python 3.10
+        if: steps.window.outputs.run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install Kaggle CLI
+        if: steps.window.outputs.run == 'true'
         run: pip install kaggle
 
       - name: Push & Trigger Kaggle GPU Execution
+        if: steps.window.outputs.run == 'true'
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        run: |
-          kaggle kernels push -p .
+        run: kaggle kernels push -p .
