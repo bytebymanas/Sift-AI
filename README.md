@@ -5,7 +5,7 @@
 <a href="https://github.com/bytebymanas/sift-ai">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=900&color=20BEFF&center=true&vCenter=true&width=820&lines=A+scheduler+pings+GitHub+Actions+at+the+time+you+choose;Kaggle+launches+the+notebook+on+a+T4+GPU;Gemma+reads+20-30+articles+and+picks+the+single+best+one;A+PDF+with+takeaways+and+a+word+of+the+day+lands+in+your+inbox" alt="Typing animation" />
 </a>
-
+ 
 <br/>
 
 [![Daily Run](https://img.shields.io/github/actions/workflow/status/bytebymanas/sift-ai/daily_colab_trigger.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=DAILY%20RUN&labelColor=0f0c29)](https://github.com/bytebymanas/sift-ai/actions)
