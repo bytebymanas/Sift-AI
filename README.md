@@ -3,7 +3,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&height=240&color=0:0f0c29,50:302b63,100:20BEFF&text=SIFT%20AI&fontColor=ffffff&fontSize=78&fontAlignY=38&desc=The%20best%20article%20of%20the%20day%2C%20picked%20by%20AI%20%C2%B7%20Zero%20servers%20%C2%B7%20Zero%20API%20bills&descAlignY=60&descSize=17&animation=fadeIn" alt="Sift AI" width="100%" />
 
 <a href="https://github.com/bytebymanas/sift-ai">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=900&color=20BEFF&center=true&vCenter=true&width=820&lines=A+scheduler+pings+GitHub+Actions+at+the+time+you+choose;Kaggle+launches+the+notebook+on+a+T4+GPU;Qwen+picks+the+single+best+article+of+the+day;A+PDF+with+takeaways+and+a+word+of+the+day+lands+in+your+inbox" alt="Typing animation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=900&color=20BEFF&center=true&vCenter=true&width=820&lines=A+scheduler+pings+GitHub+Actions+at+the+time+you+choose;Kaggle+launches+the+notebook+on+a+T4+GPU;Gemma+reads+20-30+articles+and+picks+the+single+best+one;A+PDF+with+takeaways+and+a+word+of+the+day+lands+in+your+inbox" alt="Typing animation" />
 </a>
 
 <br/>
@@ -14,7 +14,7 @@
 
 ![Kaggle](https://img.shields.io/badge/Kaggle-T4_GPU-20BEFF?style=flat-square&logo=kaggle&logoColor=white)
 ![CrewAI](https://img.shields.io/badge/CrewAI-Agents-FF4B4B?style=flat-square)
-![Ollama](https://img.shields.io/badge/Ollama-Qwen-111111?style=flat-square&logo=ollama&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-Gemma-111111?style=flat-square&logo=ollama&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=flat-square&logo=python&logoColor=white)
 ![WeasyPrint](https://img.shields.io/badge/WeasyPrint-PDF-8A2BE2?style=flat-square)
 ![Cost](https://img.shields.io/badge/Cost-%240-2ea44f?style=flat-square)
@@ -29,16 +29,16 @@
 
 ## ◈ The Idea
 
-Most news is noise. **Sift AI** reads the day's candidates and hands you exactly one article worth your time, complete with key takeaways and a word of the day to grow your vocabulary.
+Most news is noise. **Sift AI** searches news sources and editorial feeds, reads and cleans **20 to 30 full-text candidates**, and hands you exactly one article worth your time, complete with key takeaways and a word of the day to grow your vocabulary.
 
-Every day at the time you choose, a scheduler triggers a GitHub Actions workflow, which launches a Kaggle notebook. Inside it, a small crew of AI agents running open-source Qwen models collects fresh stories, picks the strongest one, summarizes it, chooses a useful English word, and emails everything to you as a clean PDF.
+Every day at the time you choose, a scheduler triggers a GitHub Actions workflow, which launches a Kaggle notebook. Inside it, a small crew of AI agents running open-source Gemma models collects fresh stories, picks the strongest one, summarizes it, chooses a useful English word, and emails everything to you as a clean PDF.
 
 No server stays on. No LLM API is billed. Nobody has to press a button.
 
 <table>
 <tr>
 <td align="center" width="25%"><h3>Daily</h3><sub>At the time you choose</sub></td>
-<td align="center" width="25%"><h3>1 Article</h3><sub>Chosen from ~20 candidates</sub></td>
+<td align="center" width="25%"><h3>1 Article</h3><sub>Chosen from 20–30 candidates</sub></td>
 <td align="center" width="25%"><h3>4 Agents</h3><sub>Select · Summarize · Vocab</sub></td>
 <td align="center" width="25%"><h3>$0</h3><sub>Inference cost</sub></td>
 </tr>
@@ -81,11 +81,13 @@ No server stays on. No LLM API is billed. Nobody has to press a button.
 | Step | What happens |
 | :---: | :--- |
 | **1** | A scheduler (cron-job.org) calls GitHub's `repository_dispatch` API at the time you set. The workflow pushes the notebook to Kaggle with the CLI |
-| **2** | Kaggle starts a T4 GPU kernel. The notebook installs Ollama and pulls the two Qwen models |
-| **3** | It queries NewsData for each of your topics (globally and India-scoped) and reads editorial RSS feeds, then scrapes and cleans every candidate |
-| **4** | The Senior News Editor agent picks the one article that best rewards a reader's time |
+| **2** | Kaggle starts a T4 GPU kernel. The notebook installs Ollama and pulls the two Gemma models |
+| **3** | It queries NewsData for each of your topics (globally and India-scoped) and reads editorial RSS feeds, then scrapes and cleans every result into a pool of **20 to 30 full-text candidates** |
+| **4** | The Senior News Editor agent compares the whole pool and picks the one article that best rewards a reader's time |
 | **5** | Two lighter agents extract takeaways and choose a word of the day |
 | **6** | A fixed HTML template is rendered to PDF with WeasyPrint and sent through Gmail |
+
+**The funnel:** many searches and feeds → 20 to 30 cleaned full-text candidates → 1 article.
 
 <br/>
 
@@ -103,10 +105,10 @@ Two models, four agents. The bigger model does the one job that needs real judgm
 
 | Agent | Model | Job |
 | :--- | :--- | :--- |
-| **Senior News Editor** | Qwen 2.5 · 7B Instruct | Compares all candidates and picks exactly one, or declares that none qualify |
-| **Content Summarizer** | Qwen 3 · 1.7B | Extracts 3 to 5 specific takeaways, never inventing a claim |
-| **Vocabulary Word Selector** | Qwen 3 · 1.7B | Picks one common, everyday English word, ignoring the article's topic |
-| **English Vocabulary Coach** | Qwen 3 · 1.7B | Explains that word with a meaning, example and practice scenario. It never sees the article |
+| **Senior News Editor** | Gemma 4 · 26B (A4B) | Compares all candidates and picks exactly one, or declares that none qualify |
+| **Content Summarizer** | Gemma 4 · E4B | Extracts 3 to 5 specific takeaways, never inventing a claim |
+| **Vocabulary Word Selector** | Gemma 4 · E4B | Picks one common, everyday English word, ignoring the article's topic |
+| **English Vocabulary Coach** | Gemma 4 · E4B | Explains that word with a meaning, example and practice scenario. It never sees the article |
 
 <details>
 <summary><b>How the editor chooses</b></summary>
@@ -303,7 +305,7 @@ EDITORIAL_FEEDS = {
 | **Scheduling** | cron-job.org (free) calling GitHub `repository_dispatch` |
 | **Orchestration** | GitHub Actions |
 | **Compute** | Kaggle GPU kernels · Nvidia T4 · Python 3.10 |
-| **LLM inference** | Ollama · Qwen 2.5 7B Instruct · Qwen 3 1.7B |
+| **LLM inference** | Ollama · Gemma 4 26B (A4B) · Gemma 4 E4B |
 | **Agents** | CrewAI |
 | **Sources** | NewsData API · RSS via `feedparser` |
 | **Scraping** | `requests` · BeautifulSoup |
@@ -348,7 +350,7 @@ Scraping and cleaning are deterministic, so the article reaches you exactly as p
 <summary><b>Open-weight models, not paid APIs</b></summary>
 <br/>
 
-Qwen served through Ollama means no per-token billing and no vendor lock-in.
+Gemma served through Ollama means no per-token billing and no vendor lock-in. The pipeline started on Qwen, and moving to Gemma 4 only meant changing the `ollama pull` lines and the two model names in the configuration cell.
 
 </details>
 
