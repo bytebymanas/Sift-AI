@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07061c"/><stop offset="1" stop-color="#121047"/></linearGradient><linearGradient id="pr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b7bff"/><stop offset="1" stop-color="#20BEFF"/></linearGradient></defs>
+<rect width="1200" height="400" rx="18" fill="url(#bg)"/>
+<text x="48" y="46" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" letter-spacing="3" fill="#ffffff" fill-opacity=".6">MODEL_CHAINS · FIRST CHOICE, THEN BACKUPS</text>
+<text x="48" y="92" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Scorer</text>
+<text x="48" y="110" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">rates every candidate</text>
+<rect x="330" y="76" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="99" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:12b</text>
+<text x="466" y="99" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 94 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="76" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="99" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:e4b</text>
+<text x="48" y="146" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Selector</text>
+<text x="48" y="164" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">compares the finalists</text>
+<rect x="330" y="130" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="153" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:26b</text>
+<text x="466" y="153" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 148 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="130" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="153" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:12b</text>
+<text x="734" y="153" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M824 148 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="866.0" y="130" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="927" y="153" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:e4b</text>
+<text x="48" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Ad spotter</text>
+<text x="48" y="218" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">finds leftover ads</text>
+<rect x="330" y="184" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="207" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:12b</text>
+<text x="466" y="207" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 202 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="184" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="207" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:e4b</text>
+<text x="48" y="254" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Vocab picker</text>
+<text x="48" y="272" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">chooses the word</text>
+<rect x="330" y="238" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="261" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:12b</text>
+<text x="466" y="261" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 256 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="238" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="261" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:e4b</text>
+<text x="48" y="308" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Vocab coach</text>
+<text x="48" y="326" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">explains it, blind to the article</text>
+<rect x="330" y="292" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="315" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:e4b</text>
+<text x="466" y="315" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 310 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="292" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="315" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:12b</text>
+<text x="48" y="362" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#fff">Takeaways</text>
+<text x="48" y="380" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9a97d6">pulls the key facts</text>
+<rect x="330" y="346" width="122" height="36" rx="18" fill="url(#pr)"/><text x="391" y="369" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#0a0820">gemma4:e4b</text>
+<text x="466" y="369" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#ffb547">if it fails</text>
+<path d="M556 364 h26 m-6 -5 l6 5 l-6 5" stroke="#ffb547" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="598.0" y="346" width="122" height="36" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-dasharray="4 4"/><text x="659" y="369" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d9d7ff">gemma4:12b</text>
+</svg>

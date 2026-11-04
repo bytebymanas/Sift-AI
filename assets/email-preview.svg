@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" width="640" height="760" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15104a"/><stop offset="1" stop-color="#0a2a52"/></linearGradient><filter id="sh" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".45"/></filter></defs>
+<rect width="640" height="760" rx="22" fill="url(#bg)"/>
+<g filter="url(#sh)"><rect x="70" y="40" width="500" height="680" rx="12" fill="#fffdf8"/></g>
+<text x="320.0" y="88" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="700" letter-spacing="5" fill="#1a1a1a">DAILY BRIEF AI</text>
+<text x="320.0" y="108" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#7a7364">04 November 2026</text>
+<g stroke="#1a1a1a"><line x1="106" y1="122" x2="534" y2="122" stroke-width="2.5"/><line x1="106" y1="128" x2="534" y2="128" stroke-width="1"/></g>
+<text x="106" y="168" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" fill="#1a1a1a">Central bank holds rates steady</text>
+<text x="106" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" fill="#1a1a1a">as inflation proves sticky</text>
+<text x="106" y="222" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#7a7364">The Hindu  ·  04 Nov 2026  ·  6 min read</text>
+<rect x="106" y="244" width="3" height="56" fill="#8c2f39"/>
+<text x="120" y="258" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6" fill="#8c2f39">WHY THIS ARTICLE</text>
+<text x="120" y="280" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" fill="#4a463d">Named sources throughout, and it explains</text>
+<text x="120" y="297" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" fill="#4a463d">why the decision matters, not just what.</text>
+<text x="106" y="338" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2" fill="#8c2f39">KEY TAKEAWAYS</text>
+<text x="106" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#8c2f39">1</text>
+<text x="136" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="13.5" fill="#1a1a1a">The policy rate was left unchanged.</text>
+<line x1="136" y1="381" x2="534" y2="381" stroke="#e4ddcd"/>
+<text x="106" y="404" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#8c2f39">2</text>
+<text x="136" y="404" font-family="Georgia, 'Times New Roman', serif" font-size="13.5" fill="#1a1a1a">Food prices drove the latest inflation reading.</text>
+<line x1="136" y1="415" x2="534" y2="415" stroke="#e4ddcd"/>
+<text x="106" y="438" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#8c2f39">3</text>
+<text x="136" y="438" font-family="Georgia, 'Times New Roman', serif" font-size="13.5" fill="#1a1a1a">Growth forecasts were trimmed for next year.</text>
+<line x1="136" y1="449" x2="534" y2="449" stroke="#e4ddcd"/>
+<rect x="106" y="488" width="428" height="118" rx="8" fill="#f6f1e6"/><rect x="106" y="488" width="4" height="118" rx="2" fill="#8c2f39"/>
+<text x="128" y="514" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2" fill="#8c2f39">WORD OF THE DAY</text>
+<text x="128" y="546" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#1a1a1a">Plausible</text>
+<text x="128" y="570" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#1a1a1a">Seeming reasonable or likely to be true.</text>
+<text x="128" y="589" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" font-style="italic" fill="#4a463d">"That excuse sounds plausible, but let's check."</text>
+<rect x="106" y="630" width="210" height="38" rx="6" fill="#8c2f39"/><text x="211" y="654" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#fff">Read the original  →</text>
+<text x="332" y="654" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#7a7364">Full article attached as PDF</text>
+</svg>
