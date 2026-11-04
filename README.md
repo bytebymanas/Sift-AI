@@ -1,39 +1,31 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Sift AI — one article worth your time, every morning" width="100%" />
+<img src="assets/hero.svg" alt="Sift AI — one article worth your time, every morning" width="1200" />
 
-### THE DAILY SIGNAL, WITHOUT THE NOISE
+<sub>PERSONAL AI NEWS EDITOR &nbsp;·&nbsp; OPEN MODELS &nbsp;·&nbsp; ZERO ALWAYS-ON SERVERS</sub>
 
-**A personal editor that reads the pile, scores the substance, and sends you one story worth your time.**
+<p>
+<a href="https://github.com/bytebymanas/Sift-AI/actions"><img src="https://img.shields.io/github/actions/workflow/status/bytebymanas/Sift-AI/daily_colab_trigger.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=DAILY%20RUN&labelColor=111827&color=22d3ee" alt="Daily run status" /></a>
+<a href="https://github.com/bytebymanas/Sift-AI/commits/main"><img src="https://img.shields.io/github/last-commit/bytebymanas/Sift-AI?style=for-the-badge&logo=git&logoColor=white&label=LATEST%20BUILD&labelColor=111827&color=a78bfa" alt="Latest build" /></a>
+<a href="https://github.com/bytebymanas/Sift-AI/stargazers"><img src="https://img.shields.io/github/stars/bytebymanas/Sift-AI?style=for-the-badge&logo=github&logoColor=white&label=READERS&labelColor=111827&color=fbbf24" alt="GitHub stars" /></a>
+</p>
 
-[![Daily Run](https://img.shields.io/github/actions/workflow/status/bytebymanas/Sift-AI/daily_colab_trigger.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=DAILY%20RUN&labelColor=111827&color=22d3ee)](https://github.com/bytebymanas/Sift-AI/actions)
-[![Last Commit](https://img.shields.io/github/last-commit/bytebymanas/Sift-AI?style=for-the-badge&logo=git&logoColor=white&label=LATEST%20BUILD&labelColor=111827&color=a78bfa)](https://github.com/bytebymanas/Sift-AI/commits/main)
-[![Stars](https://img.shields.io/github/stars/bytebymanas/Sift-AI?style=for-the-badge&logo=github&logoColor=white&label=READERS&labelColor=111827&color=fbbf24)](https://github.com/bytebymanas/Sift-AI/stargazers)
-
-<br/><br/>
-
-**[✉ Your Brief](#-the-inbox)** &nbsp; / &nbsp; **[⌁ How It Works](#-the-pipeline)** &nbsp; / &nbsp; **[⚙ Tune It](#-you-hold-the-dials)** &nbsp; / &nbsp; **[↗ Get Started](#-setup)**
+**[✉ Your Brief](#-the-inbox) &nbsp;·&nbsp; [⌁ The Pipeline](#-the-pipeline) &nbsp;·&nbsp; [⚙ Tune It](#-you-hold-the-dials) &nbsp;·&nbsp; [↗ Get Started](#-setup)**
 
 </div>
 
-<br/>
+<p align="center"><img src="assets/signal-flow.gif" alt="Animated flow: discover news, score it against your preferences, and deliver one brief" width="100%" /></p>
 
-<table>
+<table align="center" width="100%">
 <tr>
-<td align="center" width="25%"><sub>THE OUTPUT</sub><br/><h2>01</h2><b>story, daily</b><br/><sub>chosen for substance</sub></td>
-<td align="center" width="25%"><sub>THE SIGNAL</sub><br/><h2>07</h2><b>weighted criteria</b><br/><sub>tuned to your taste</sub></td>
-<td align="center" width="25%"><sub>THE SAFETY NET</sub><br/><h2>03×</h2><b>model fallbacks</b><br/><sub>per task, when needed</sub></td>
-<td align="center" width="25%"><sub>THE RUN COST</sub><br/><h2>$0</h2><b>inference bill</b><br/><sub>no always-on server</sub></td>
+<td align="center" width="25%"><sub>THE OUTPUT</sub><br/><h2>01</h2><b>story each morning</b><br/><sub>chosen for substance</sub></td>
+<td align="center" width="25%"><sub>YOUR SIGNAL</sub><br/><h2>07</h2><b>weighted criteria</b><br/><sub>tuned to your taste</sub></td>
+<td align="center" width="25%"><sub>MODEL BACKUPS</sub><br/><h2>03</h2><b>choices per task</b><br/><sub>automatic on failure</sub></td>
+<td align="center" width="25%"><sub>INFERENCE COST</sub><br/><h2>$0</h2><b>no API bill</b><br/><sub>Kaggle GPU shuts down</sub></td>
 </tr>
 </table>
 
-<br/>
-
-> **Wide net in. One clear signal out.** News and editorials are gathered, cleaned, ranked against your preferences, then delivered with takeaways and a useful word. Open-weight models run on a Kaggle GPU; the GPU shuts down when the job finishes.
-
-<p align="center"><b>COLLECT</b> ━━━ ◈ ━━━ <b>CLEAN</b> ━━━ ◈ ━━━ <b>JUDGE</b> ━━━ ◈ ━━━ <b>DELIVER</b></p>
-
-<br/>
+<p align="center"><sub>WIDE NET IN &nbsp;→&nbsp; ONE CLEAR SIGNAL OUT</sub></p>
 
 ## ✦ The Inbox
 
@@ -41,7 +33,7 @@
 <tr>
 <td width="46%" valign="middle">
 
-<img src="assets/email-preview.svg" alt="The daily email: title, why it was chosen, takeaways, word of the day" width="100%" />
+<img src="assets/email-preview.svg" alt="The daily email: title, why it was chosen, takeaways, word of the day" width="420" />
 
 </td>
 <td width="54%" valign="middle">
@@ -66,7 +58,7 @@
 
 ## ✦ The Pipeline
 
-<img src="assets/pipeline.svg" alt="Sift AI pipeline: sources, pre-filter, scrape and clean, score each, compare top three, strip ads, inbox" width="100%" />
+<p align="center"><img src="assets/pipeline.svg" alt="Sift AI pipeline: sources, pre-filter, scrape and clean, score each, compare top three, strip ads, inbox" width="1200" /></p>
 
 <sub><b>Amber</b> steps are plain Python. <b>Cyan</b> is a model. <b>Violet</b> is a model proposing and Python deciding. A scheduler pings GitHub Actions, which launches a Kaggle T4 notebook, which installs Ollama, pulls the models and runs everything above. The GPU shuts down when it is done.</sub>
 
@@ -86,7 +78,7 @@
 
 ## ✦ You Hold the Dials
 
-<img src="assets/scoring.svg" alt="Ranking weights: five criteria scored by the model, two computed by Python" width="100%" />
+<p align="center"><img src="assets/scoring.svg" alt="Ranking weights: five criteria scored by the model, two computed by Python" width="1200" /></p>
 
 <br/>
 
@@ -118,7 +110,7 @@ Length is a *gentle* factor, never a gate: a flat full score inside your range a
 
 ## ✦ Models That Back Each Other Up
 
-<img src="assets/models.svg" alt="Each role has an ordered chain of models with automatic fallback" width="100%" />
+<p align="center"><img src="assets/models.svg" alt="Each role has an ordered chain of models with automatic fallback" width="1200" /></p>
 
 <br/>
 
