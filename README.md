@@ -238,6 +238,7 @@ Tokens expire. Note the date and renew it, or the daily run quietly stops. The o
 sift-ai/
 ├── .github/workflows/daily_colab_trigger.yml   # dispatch trigger + optional time-window guard
 ├── assets/                                      # README graphics
+├── LICENSE                                      # proprietary, all rights reserved
 ├── sift-ai.ipynb                                # the whole pipeline
 ├── kernel-metadata.json                         # Kaggle GPU execution spec
 └── README.md
@@ -251,6 +252,12 @@ sift-ai/
 | :---: | :--- |
 | **2.0** | One configuration cell for topics, sources, weights, vocabulary level and recipients. Per-criterion scoring with your own weights, scored article by article, then a head-to-head of the finalists. Better extraction with paywall detection and story-level de-duplication. An ad remover where models point and Python deletes. Ordered model chains with automatic fallback. Several recipients in BCC. A redesigned HTML email with dark mode. Dry-run mode and failure alerts |
 | **1.0** | The original pipeline: one editor model picks from the pool, two lighter models write takeaways and the word of the day, a PDF is emailed to a single address, all triggered headlessly through Kaggle and GitHub Actions |
+
+<br/>
+
+## ✦ License and Contributions
+
+**Proprietary · All Rights Reserved.** This repository is publicly viewable, but no permission is granted to copy, reuse, modify, or redistribute its code or other project materials. Contributions are not accepted without the copyright holder's prior written permission. See [`LICENSE`](LICENSE) for the full terms.
 
 <br/>
 
