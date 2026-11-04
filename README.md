@@ -1,29 +1,37 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Sift AI: one article worth your time, every morning" width="100%" />
+<img src="assets/hero.svg" alt="Sift AI — one article worth your time, every morning" width="100%" />
 
-<br/>
+### THE DAILY SIGNAL, WITHOUT THE NOISE
 
-[![Daily Run](https://img.shields.io/github/actions/workflow/status/bytebymanas/sift-ai/daily_colab_trigger.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=DAILY%20RUN&labelColor=0f0c29)](https://github.com/bytebymanas/sift-ai/actions)
-[![Last Commit](https://img.shields.io/github/last-commit/bytebymanas/sift-ai?style=for-the-badge&logo=git&logoColor=white&labelColor=0f0c29&color=302b63)](https://github.com/bytebymanas/sift-ai/commits)
-[![Stars](https://img.shields.io/github/stars/bytebymanas/sift-ai?style=for-the-badge&logo=github&logoColor=white&labelColor=0f0c29&color=20BEFF)](https://github.com/bytebymanas/sift-ai/stargazers)
+**A personal editor that reads the pile, scores the substance, and sends you one story worth your time.**
 
-**[Inbox](#-the-inbox)** · **[Pipeline](#-the-pipeline)** · **[Steer it](#-you-hold-the-dials)** · **[Models](#-models-that-back-each-other-up)** · **[Setup](#-setup)** · **[Releases](#-releases)** · **[FAQ](#-faq)**
+[![Daily Run](https://img.shields.io/github/actions/workflow/status/bytebymanas/Sift-AI/daily_colab_trigger.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=DAILY%20RUN&labelColor=111827&color=22d3ee)](https://github.com/bytebymanas/Sift-AI/actions)
+[![Last Commit](https://img.shields.io/github/last-commit/bytebymanas/Sift-AI?style=for-the-badge&logo=git&logoColor=white&label=LATEST%20BUILD&labelColor=111827&color=a78bfa)](https://github.com/bytebymanas/Sift-AI/commits/main)
+[![Stars](https://img.shields.io/github/stars/bytebymanas/Sift-AI?style=for-the-badge&logo=github&logoColor=white&label=READERS&labelColor=111827&color=fbbf24)](https://github.com/bytebymanas/Sift-AI/stargazers)
+
+<br/><br/>
+
+**[✉ Your Brief](#-the-inbox)** &nbsp; / &nbsp; **[⌁ How It Works](#-the-pipeline)** &nbsp; / &nbsp; **[⚙ Tune It](#-you-hold-the-dials)** &nbsp; / &nbsp; **[↗ Get Started](#-setup)**
 
 </div>
 
 <br/>
 
-> Most news is noise. Sift AI reads a wide net of stories and editorials, **scores each one on the things you care about**, and emails you the single best article with its key takeaways and a word of the day. Open-weight models on a free Kaggle GPU do the thinking. Nothing stays running. Nobody gets billed.
-
-<table align="center">
+<table>
 <tr>
-<td align="center" width="25%"><h2>1</h2><sub>article a day,<br/>chosen on merit</sub></td>
-<td align="center" width="25%"><h2>7</h2><sub>weighted criteria,<br/>set by you</sub></td>
-<td align="center" width="25%"><h2>3</h2><sub>models deep per role,<br/>so one outage never matters</sub></td>
-<td align="center" width="25%"><h2>$0</h2><sub>inference bill,<br/>no server to keep alive</sub></td>
+<td align="center" width="25%"><sub>THE OUTPUT</sub><br/><h2>01</h2><b>story, daily</b><br/><sub>chosen for substance</sub></td>
+<td align="center" width="25%"><sub>THE SIGNAL</sub><br/><h2>07</h2><b>weighted criteria</b><br/><sub>tuned to your taste</sub></td>
+<td align="center" width="25%"><sub>THE SAFETY NET</sub><br/><h2>03×</h2><b>model fallbacks</b><br/><sub>per task, when needed</sub></td>
+<td align="center" width="25%"><sub>THE RUN COST</sub><br/><h2>$0</h2><b>inference bill</b><br/><sub>no always-on server</sub></td>
 </tr>
 </table>
+
+<br/>
+
+> **Wide net in. One clear signal out.** News and editorials are gathered, cleaned, ranked against your preferences, then delivered with takeaways and a useful word. Open-weight models run on a Kaggle GPU; the GPU shuts down when the job finishes.
+
+<p align="center"><b>COLLECT</b> ━━━ ◈ ━━━ <b>CLEAN</b> ━━━ ◈ ━━━ <b>JUDGE</b> ━━━ ◈ ━━━ <b>DELIVER</b></p>
 
 <br/>
 
